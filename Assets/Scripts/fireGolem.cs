@@ -7,6 +7,8 @@ public class fireGolem : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Debug.Log("hi");
+
         health -= amount;
         if(health <= 0f)
         {

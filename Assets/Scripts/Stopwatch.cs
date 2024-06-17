@@ -20,7 +20,7 @@ public class Stopwatch : MonoBehaviour
         // Set everything to 0 and turn on stopwatch UI
         currentTime = 0;
         stopwatchImg.SetActive(true);
-        stopwatchText.text = "0:00";
+        stopwatchText.text = "Time: 0:00";
     }
 
     // Update is called once per frame
