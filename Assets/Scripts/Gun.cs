@@ -1,13 +1,38 @@
+/*
+ * Author:  Sung Yeji
+ * Date: 15/06/2024
+ * Description: This script is for the Gun on the first person 
+ */
+
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    /// <summary>
+    /// The amount of damage the gun does per shoot is 10
+    /// </summary>
     public float damage = 10f;
+
+    /// <summary>
+    /// A distance range that the gun can aim accurately is 100
+    /// </summary>
     public float range = 100f;
+
     //public float fireRate = 15f;
+
+    /// <summary>
+    /// The impact of the gun's bullet does 50
+    /// </summary>
     public float impactForce = 50f;
 
+    /// <summary>
+    /// To connect the main camera into the first person
+    /// </summary>
     public Camera fpsCam;
+
+    /// <summary>
+    /// To connect 
+    /// </summary>
     public ParticleSystem muzzleFlash;
     // public GameObject impactEffect;
 
