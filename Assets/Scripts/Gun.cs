@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
 
     private float nextTimeToFire = 0f;
 
+    [SerializeField] private AudioClip gunAudio;
+
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +28,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
-
+        AudioSource.PlayClipAtPoint(gunAudio, transform.position, 1f);
         RaycastHit hit;
         
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
