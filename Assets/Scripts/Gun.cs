@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// The amount of damage the gun does per shoot is 10
     /// </summary>
-    public float damage = 10f;
+    public int damage = 10;
 
     /// <summary>
     /// A distance range that the gun can aim accurately is 100
@@ -40,6 +40,11 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private AudioClip gunAudio;
 
+    /// <summary>
+    /// AudioSource for the sound of fire golem dying
+    /// </summary>
+    //public AudioSource golem_hit;
+
     // Update is called once per frame
     void Update()
     {
@@ -60,11 +65,13 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            fireGolem FireGolem = hit.transform.GetComponent<fireGolem>();
+            fireGolem_AI FireGolem_AI = hit.transform.GetComponent<fireGolem_AI>();
 
-            if(FireGolem != null)
+            //golem_hit.enabled = true;
+
+            if (FireGolem_AI != null)
             {
-                FireGolem.TakeDamage(damage);
+                FireGolem_AI.TakeDamage(damage);
             }
 
             if(hit.rigidbody != null)
