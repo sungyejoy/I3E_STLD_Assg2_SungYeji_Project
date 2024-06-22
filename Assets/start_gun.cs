@@ -16,25 +16,24 @@ public class start_gun : MonoBehaviour
     /// Stating the UI elements
     /// </summary>
     [SerializeField] GameObject gun;
-    [SerializeField] GameObject dialogue_img;
     [SerializeField] GameObject warning_img;
     [SerializeField] GameObject approval_img;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject dialogue3;
     [SerializeField] GameObject gun_camera;
-    [SerializeField] GameObject step_4;
-    public TextMeshProUGUI dialogue_text;
+
     public TextMeshProUGUI warning_text;
 
     public door linkedDoor;
 
     bool gun_pickup = false;
 
+    [SerializeField] private AudioClip bonus_sound;
+
+
     // Start is called before the first frame update
     void Start()
     {
         warning_text.text = null;
-        step_4.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -76,7 +75,7 @@ public class start_gun : MonoBehaviour
 
     public void Collected()
     {
-        Debug.Log("Collected");
+        AudioSource.PlayClipAtPoint(bonus_sound, transform.position, 1f);
 
         // Turn off warning UI
         warning_img.SetActive(false);
@@ -98,8 +97,6 @@ public class start_gun : MonoBehaviour
         player.gameObject.GetComponent<player>().gunBoolean(gun_pickup);
 
         gun_camera.SetActive(true);
-        step_4.SetActive(true);
-
     }
 
     // Update is called once per frame

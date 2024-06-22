@@ -41,8 +41,8 @@ public class door : MonoBehaviour
             else
             {
                 // Turn on warning UI
-                warning_img.SetActive(true);
-                notificationText.text = ("Press E to open door");
+                //warning_img.SetActive(true);
+                //notificationText.text = ("Press E to open door");
 
                 // Update the player which door the player is in front of
                 other.gameObject.GetComponent<player>().UpdateDoor(this);
@@ -74,6 +74,10 @@ public class door : MonoBehaviour
         if (!opened)
         {
             Debug.Log("Door open");
+            warning_img.SetActive(false);
+            //approval_img.SetActive(true);
+            //notificationText.text = "Loading Level 1...";
+            Destroy(gameObject);
         }
     }
 

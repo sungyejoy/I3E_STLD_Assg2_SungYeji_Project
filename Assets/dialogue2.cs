@@ -15,14 +15,13 @@ public class dialogue2 : MonoBehaviour
     /// <summary>
     /// Stating the UI elements
     /// </summary>
-    [SerializeField] GameObject dialogue_img;
-    public TextMeshProUGUI dialogue_text;
+
     [SerializeField] GameObject step_3;
 
     // Start is called before the first frame update
     void Start()
     {
-        step_3.SetActive(false);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,8 +33,7 @@ public class dialogue2 : MonoBehaviour
         /// 
         if (other.gameObject.tag == "Player")
         {
-            dialogue_img.SetActive(true);
-            dialogue_text.text = "Oh no, the core energy of the spaceship exploded!";
+            other.gameObject.GetComponent<DialogueBox>().StartDialogue();
         }
     }
 
@@ -47,9 +45,6 @@ public class dialogue2 : MonoBehaviour
         /// </summary>
         if (other.gameObject.tag == "Player")
         {
-            dialogue_img.SetActive(false);
-            dialogue_text.text = null;
-            step_3.SetActive(true);
             Destroy(gameObject);
         }
     }
