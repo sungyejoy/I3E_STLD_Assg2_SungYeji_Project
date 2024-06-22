@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     // public GameObject impactEffect;
 
-    private float nextTimeToFire = 0f;
+    //private float nextTimeToFire = 0f;
 
     [SerializeField] private AudioClip gunAudio;
 
