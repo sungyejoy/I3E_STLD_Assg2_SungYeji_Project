@@ -23,14 +23,9 @@ public class doorTransition : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<player>().gun_pickup == true)
         {
-            Debug.Log("hi");
             approval_img.SetActive(true);
             notificationText.text = "Loading Level 1...";
             LoadNextLevel();
-        }
-        else
-        {
-            Debug.Log("bye");
         }
     }
 

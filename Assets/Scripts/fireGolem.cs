@@ -13,6 +13,8 @@ public class fireGolem : MonoBehaviour
     /// </summary>
     public float health = 50f;
 
+    public int enemy = 1;
+
     public void TakeDamage(float amount)
     {
         /// <summary>
@@ -33,6 +35,9 @@ public class fireGolem : MonoBehaviour
         /// <summary>
         /// The function Die() destroys the enemy itself
         /// </summary>
+
+        //fireGolem.gameObject.GetComponent<player>().addEnemy(enemy);
+
         Destroy(gameObject);
     }
 }

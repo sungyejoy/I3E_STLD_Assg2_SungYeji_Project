@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// The amount of damage the gun does per shoot is 10
     /// </summary>
-    public int damage = 10;
+    public float damage = 10;
 
     /// <summary>
     /// A distance range that the gun can aim accurately is 100
@@ -79,7 +79,7 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
-            // Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
     }

@@ -13,10 +13,6 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class player : MonoBehaviour
 {
-    public int playerHealth = 100;
-    public TextMeshProUGUI playerHealthText;
-
-    [SerializeField] GameObject heart;
 
     /// <summary>
     /// Store the current door in front of the player
@@ -26,20 +22,34 @@ public class player : MonoBehaviour
     start_gun currentGun;
     public bool gun_pickup = false;
 
+    public TextMeshProUGUI currentEnemyText;
+    public int currentEnemy = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         /// <summary>
         /// Turn on UI
         /// </summary>
-        playerHealthText.text = "Health: " + playerHealth;
-        heart.SetActive(true);
+        currentEnemyText.text = "Enemies: " + currentEnemy + "/20";
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void addEnemy(int enemy)
+    {
+        currentEnemy += enemy;
+        currentEnemyText.text = "Enemies: " + currentEnemy + "/20";
+
+        // Once all friend bees are found, font color changes
+        if (currentEnemy == 3)
+        {
+            currentEnemyText.color = Color.yellow;
+        }
     }
 
     // Connects object that has HoneypotKey script

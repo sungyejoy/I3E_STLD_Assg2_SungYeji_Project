@@ -1,8 +1,8 @@
 /*
- * Author:  Sung Yeji
- * Date: 21/06/2024
- * Description: This script is for the Fire Golem enemy using AI
- */
+* Author:  Sung Yeji
+* Date: 21/06/2024
+* Description: This script is for the Fire Golem enemy using AI
+*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +20,8 @@ public class fireGolem_AI : MonoBehaviour
     /// <summary>
     /// A float of the enemy's total health
     /// </summary>
-    public float health = 50f; 
+    public float health = 50f;
+    public int enemy = 1;
 
     // Patrolling
     public Vector3 walkPoint;
@@ -39,7 +40,8 @@ public class fireGolem_AI : MonoBehaviour
     /// <summary>
     /// AudioSource for the sound of fire golem dying
     /// </summary>
-    public AudioSource golem_die;
+    [SerializeField] private AudioClip golem_die;
+    [SerializeField] private AudioClip golem_groan;
 
     private void Awake()
     {
@@ -86,11 +88,14 @@ public class fireGolem_AI : MonoBehaviour
 
     private void ChasePlayer()
     {
+
         firegolem.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
+        AudioSource.PlayClipAtPoint(golem_groan, transform.position, 1f);
+
         firegolem.SetDestination(transform.position);
 
         transform.LookAt(player);
@@ -113,10 +118,9 @@ public class fireGolem_AI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
-        golem_die.enabled = true;
 
         /// <summary>
         /// When the gun shoots at the Fire Golem, health will be deducted
@@ -126,8 +130,8 @@ public class fireGolem_AI : MonoBehaviour
             /// <summary>
             /// If the enemy health is lower than 0, it will perish
             /// </summary>
+            AudioSource.PlayClipAtPoint(golem_die, transform.position, 1f);
             DestroyEnemy();
-            golem_die.enabled = true;
         }
     }
 
@@ -136,6 +140,8 @@ public class fireGolem_AI : MonoBehaviour
         /// <summary>
         /// The function Die() destroys the enemy itself
         /// </summary>
+        //GetComponent<player>().addEnemy(enemy);
+
         Destroy(gameObject);
     }
 

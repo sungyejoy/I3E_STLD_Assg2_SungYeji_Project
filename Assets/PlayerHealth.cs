@@ -13,5 +13,14 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
 
+        if(currentHealth <= 0)
+        {
+            // Die
+            Debug.Log("hi");
+        }
+    }
 }
