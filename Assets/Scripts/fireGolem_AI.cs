@@ -15,7 +15,9 @@ public class fireGolem_AI : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsPlayer;
+
+    public GameObject ball_spawn;
 
     /// <summary>
     /// A float of the enemy's total health
@@ -82,7 +84,7 @@ public class fireGolem_AI : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f))
             walkPointSet = true;
     }
 
@@ -103,9 +105,9 @@ public class fireGolem_AI : MonoBehaviour
         if (!alreadyAttacked)
         {
             // Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody rb = Instantiate(projectile, ball_spawn.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 10f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 1f, ForceMode.Impulse);
 
 
             alreadyAttacked = true;
@@ -143,14 +145,5 @@ public class fireGolem_AI : MonoBehaviour
         //GetComponent<player>().addEnemy(enemy);
 
         Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             // Die
-            Debug.Log("hi");
+            Debug.Log("Player Dead");
         }
     }
 }

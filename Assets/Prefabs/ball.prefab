@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2217634563592884241}
   - component: {fileID: 2012948632250217165}
   - component: {fileID: 9191394990945418709}
+  - component: {fileID: 1412474322484871958}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1242200545790954841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.149975, y: 3.4, z: 68.98197}
+  m_LocalPosition: {x: 40.9, y: 2.65, z: 68.98197}
   m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,3 +125,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc37a47f2fc56342a2eb8d7cf877325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+--- !u!135 &1412474322484871958
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242200545790954841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.49999997
+  m_Center: {x: 0, y: 0, z: 0}

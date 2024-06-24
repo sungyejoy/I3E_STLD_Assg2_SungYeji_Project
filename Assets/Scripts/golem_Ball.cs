@@ -1,11 +1,18 @@
+/*
+* Author: Sung Yeji
+* Date: 23/06/2024
+* Description: Script for Door 
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 
-public class golem_Ball : MonoBehaviour
+public class golem_Ball : PlayerHealth
 {
-    [SerializeField] GameObject currentHealth;
 
     private void Start()
     {
@@ -16,12 +23,14 @@ public class golem_Ball : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            //currentHealth = collision.GetComponent<PlayerHealth>();
+            TakeDamage(10);
+            Debug.Log(currentHealth);
+            Destroy(gameObject);
+        }
 
-            if(currentHealth != null)
-            {
-                //currentHealth.TakeDamage(10);
-            }
+        else
+        {
+            Destroy(gameObject, 5f);
         }
     }
 

@@ -25,6 +25,14 @@ public class player : MonoBehaviour
     public TextMeshProUGUI currentEnemyText;
     public int currentEnemy = 0;
 
+    [SerializeField] Transform main_camera;
+    [SerializeField] float interactionDistance;
+
+    Interactable collectible;
+
+    [SerializeField] public GameObject warning_img;
+    public TextMeshProUGUI warning_text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +45,34 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawLine(main_camera.position, main_camera.position + (main_camera.forward * interactionDistance), Color.red);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(main_camera.transform.position, main_camera.transform.forward, out hit))
+        {
+            if (hit.transform.TryGetComponent<Interactable>(out collectible))
+            {
+                if (hit.transform.tag == "Collectible")
+                {
+                    warning_img.SetActive(true);
+                    warning_text.text = collectible.text.ToString();
+                }
+
+                else if(hit.transform.tag == "Door")
+                {
+                    collectible.View();
+                    
+                }
+            }
+
+            else
+            {
+                warning_img.SetActive(false);
+                warning_text.text = null;
+            }
+
+        }
     }
 
     public void addEnemy(int enemy)
@@ -75,13 +110,23 @@ public class player : MonoBehaviour
             currentDoor = null;
         }
 
-        // Do a null check for the currentCollectible (honeypotkey)
-        if (currentGun != null)
+
+        if(collectible != null)
         {
-            Debug.Log("currentgun null");
-            currentGun.Collected();
-            currentGun = null;
+            if (collectible.tag == "Collectible")
+            {
+                Debug.Log("collectible");
+                collectible.Collectible();
+            }
+
+            else if (collectible.tag == "Door")
+            {
+                Debug.Log("door");
+                collectible.ChangeScene();
+            }
+
         }
+        
     }
 
         public void UpdateDoor(door newDoor)
