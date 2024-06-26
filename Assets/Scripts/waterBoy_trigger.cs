@@ -4,14 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class waterBoy_trigger : MonoBehaviour
+public class waterBoy_trigger : Interactable
 {
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject speech;
-    public TextMeshProUGUI textComponent;
-    [SerializeField] private AudioClip talking;
-    public string[] lines;
-    public float textSpeed;
 
     private int index;
 
@@ -23,70 +19,9 @@ public class waterBoy_trigger : MonoBehaviour
         textComponent.text = string.Empty;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void Dialogue()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            speech.SetActive(false);
-            dialogueBox.SetActive(true);
-            textComponent.text = string.Empty;
-            StartDialogue();
-        }
+        base.Dialogue();
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (textComponent.text == lines[index])
-            {
-                NextLine();
-            }
-
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
-            }
-        }
-    }
-
-    public void StartDialogue()
-    {
-        index = 0;
-        StartCoroutine(TypeLine());
-        AudioSource.PlayClipAtPoint(talking, transform.position, 1f);
-    }
-
-    IEnumerator TypeLine()
-    {
-        foreach (char c in lines[index].ToCharArray())
-        {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
-        }
-    }
-
-    void NextLine()
-    {
-        if (index < lines.Length - 1)
-        {
-            index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-            Debug.Log(lines.Length);
-            Debug.Log(index);
-        }
-
-        else
-        {
-            Debug.Log("hi");
-            dialogueBox.SetActive(false);
-            textComponent.text = null;
-            AudioSource.Destroy(talking);
-            gameObject.SetActive(false);
-        }
-    }
 }

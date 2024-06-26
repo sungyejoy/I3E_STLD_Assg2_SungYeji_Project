@@ -22,6 +22,15 @@ public class Interactable : MonoBehaviour
 
     public float transitionTime = 1f;
 
+    [SerializeField] GameObject dialogueBox;
+    [SerializeField] GameObject speech;
+    public TextMeshProUGUI textComponent;
+
+    public string[] lines;
+    public float textSpeed;
+
+    private int index;
+
     public virtual void Collectible()
     {
         Destroy(gameObject);
@@ -33,6 +42,68 @@ public class Interactable : MonoBehaviour
         warning_img.SetActive(true);
 
     }
+
+    public virtual void Dialogue()
+    {
+        speech.SetActive(false);
+        dialogueBox.SetActive(true);
+        textComponent.text = string.Empty;
+        StartDialogue();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (textComponent.text == lines[index])
+            {
+                NextLine();
+            }
+
+            else
+            {
+                StopAllCoroutines();
+                textComponent.text = lines[index];
+            }
+        }
+    }
+
+    public void StartDialogue()
+    {
+        index = 0;
+        StartCoroutine(TypeLine());
+    }
+
+    IEnumerator TypeLine()
+    {
+        foreach (char c in lines[index].ToCharArray())
+        {
+            textComponent.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void NextLine()
+    {
+        if (index < lines.Length - 1)
+        {
+            index++;
+            textComponent.text = string.Empty;
+            StartCoroutine(TypeLine());
+            Debug.Log(lines.Length);
+            Debug.Log(index);
+        }
+
+        else
+        {
+            Debug.Log("hi");
+            dialogueBox.SetActive(false);
+            textComponent.text = null;
+            gameObject.SetActive(false);
+        }
+    }
+
 
     public virtual void ChangeScene()
     {
@@ -67,11 +138,10 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         warning_text.text = null;
+
+        dialogueBox.SetActive(false);
+        speech.SetActive(true);
+        textComponent.text = string.Empty;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -407,6 +407,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
+--- !u!95 &293027194 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2318557592707645327, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
+  m_PrefabInstance: {fileID: 293027193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383899211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: 791df4ce3b731e3448f22443740fe560, type: 3}
@@ -461,6 +466,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
+--- !u!114 &457640266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457640261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b67ef80f3cd4964a8cac58a2f6db3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warning_img: {fileID: 0}
+  warning_text: {fileID: 0}
+  text: Press E to Interact
+  transition: {fileID: 293027194}
+  transitionTime: 1
+  dialogueBox: {fileID: 0}
+  speech: {fileID: 1176637217}
+  textComponent: {fileID: 0}
+  lines:
+  - What are you doing here??
+  - This place is invaded with Lava Monsters!!!
+  - Due to the invasion, what once was a Aqua Planet, is now a Volanic Planet...
+  - Please help to fight for our Aqua Citizens!!
+  - Just follow the path
+  - In return, I will give you my Crystal Core that can power any gadgets
+  textSpeed: 0.05
+  dialogueBox: {fileID: 0}
+  speech: {fileID: 1176637217}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,84 +1217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
---- !u!1 &1465510052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1465510054}
-  - component: {fileID: 1465510053}
-  - component: {fileID: 1465510055}
-  m_Layer: 0
-  m_Name: waterBoy_trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1465510053
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465510052}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.67, y: 1, z: 1.83}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1465510054
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465510052}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.394978, y: 1.0540704, z: 27.23115}
-  m_LocalScale: {x: 2.0548062, y: 1.8804569, z: 1.8203393}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465510055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465510052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b67ef80f3cd4964a8cac58a2f6db3dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 0}
-  speech: {fileID: 1176637217}
-  textComponent: {fileID: 0}
-  talking: {fileID: 8300000, guid: b96a318032f772744b57195cd5eef28c, type: 3}
-  lines:
-  - What are you doing here??
-  - This place is invaded with Lava Monsters!!!
-  - Due to the invasion, what once was a Aqua Planet, is now a Volanic Planet...
-  - Please help to fight for our Aqua Citizens!!
-  - Just follow the path
-  - In return, I will give you my Crystal Core that can power any gadgets
-  textSpeed: 0.05
 --- !u!1001 &1560661473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1640,6 +1597,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       insertIndex: -1
       addedObject: {fileID: 457640265}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 457640266}
   m_SourcePrefab: {fileID: 100100000, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
 --- !u!1001 &1939235042
 PrefabInstance:
@@ -1977,7 +1937,6 @@ SceneRoots:
   - {fileID: 1390030}
   - {fileID: 1560661473}
   - {fileID: 1848742808}
-  - {fileID: 1465510054}
   - {fileID: 1176637223}
   - {fileID: 1939235042}
   - {fileID: 2077464556}
