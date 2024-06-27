@@ -32,11 +32,13 @@ public class FilllStatusBar : MonoBehaviour
         if (fillValue <= slider.maxValue / 3)
         {
             fillImage.color = Color.red;
+            GameManager.Instance.hurt.SetActive(true);
         }
 
         else if(fillValue > slider.maxValue / 3)
         {
             fillImage.color = Color.green;
+            GameManager.Instance.hurt.SetActive(false);
         }
 
         slider.value = fillValue;

@@ -106,7 +106,7 @@ public class fireGolem_AI : MonoBehaviour
         {
             // Attack code here
             Rigidbody rb = Instantiate(projectile, ball_spawn.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
             rb.AddForce(transform.up * 1f, ForceMode.Impulse);
 
 

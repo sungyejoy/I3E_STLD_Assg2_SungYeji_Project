@@ -13,23 +13,18 @@ using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] public GameObject warning_img;
-    public TextMeshProUGUI warning_text;
 
     public string text = "Press E to Interact";
 
-    public Animator transition;
-
     public float transitionTime = 1f;
 
-    [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject speech;
-    public TextMeshProUGUI textComponent;
 
     public string[] lines;
     public float textSpeed;
 
     private int index;
+    private int max_index;
 
     public virtual void Collectible()
     {
@@ -39,15 +34,15 @@ public class Interactable : MonoBehaviour
     public virtual void View()
     {
         // Turn on warningUI when the player enters trigger
-        warning_img.SetActive(true);
+        GameManager.Instance.warning_img.SetActive(true);
 
     }
 
     public virtual void Dialogue()
     {
         speech.SetActive(false);
-        dialogueBox.SetActive(true);
-        textComponent.text = string.Empty;
+        GameManager.Instance.dialogueBox.SetActive(true);
+        GameManager.Instance.textComponent.text = string.Empty;
         StartDialogue();
     }
 
@@ -56,7 +51,7 @@ public class Interactable : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (textComponent.text == lines[index])
+            if (GameManager.Instance.textComponent.text == lines[index])
             {
                 NextLine();
             }
@@ -64,24 +59,39 @@ public class Interactable : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                GameManager.Instance.textComponent.text = lines[index];
             }
         }
     }
 
     public void StartDialogue()
     {
-        index = 0;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            index = 0;
+            max_index = 3;
+        }
+        
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            index = 4;
+            max_index = 6;
+        }
         StartCoroutine(TypeLine());
+
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        if (index <= max_index)
         {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            foreach (char c in lines[index].ToCharArray())
+            {
+                GameManager.Instance.textComponent.text += c;
+                yield return new WaitForSeconds(textSpeed);
+            }
         }
+
     }
 
     void NextLine()
@@ -89,7 +99,7 @@ public class Interactable : MonoBehaviour
         if (index < lines.Length - 1)
         {
             index++;
-            textComponent.text = string.Empty;
+            GameManager.Instance.textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
             Debug.Log(lines.Length);
             Debug.Log(index);
@@ -98,8 +108,8 @@ public class Interactable : MonoBehaviour
         else
         {
             Debug.Log("hi");
-            dialogueBox.SetActive(false);
-            textComponent.text = null;
+            GameManager.Instance.dialogueBox.SetActive(false);
+            GameManager.Instance.textComponent.text = null;
             gameObject.SetActive(false);
         }
     }
@@ -120,7 +130,7 @@ public class Interactable : MonoBehaviour
     IEnumerator LoadLevel(int levelIndex)
     {
         // Play animation
-        transition.SetTrigger("Start");
+        GameManager.Instance.transition.SetTrigger("Start");
 
         /// <summary>
         /// Pauses the transition for x seconds
@@ -137,11 +147,11 @@ public class Interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        warning_text.text = null;
+        GameManager.Instance.warning_text.text = null;
 
-        dialogueBox.SetActive(false);
+        GameManager.Instance.dialogueBox.SetActive(false);
         speech.SetActive(true);
-        textComponent.text = string.Empty;
+        GameManager.Instance.textComponent.text = string.Empty;
     }
 
 }

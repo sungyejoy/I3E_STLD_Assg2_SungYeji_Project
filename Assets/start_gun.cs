@@ -42,7 +42,7 @@ public class start_gun : Interactable
         AudioSource.PlayClipAtPoint(bonus_sound, transform.position, 1f);
 
         // Turn off warning UI
-        warning_img.SetActive(false);
+        GameManager.Instance.warning_img.SetActive(false);
 
         // Tell the door to unlock itself
         linkedDoor.SetLock(false);

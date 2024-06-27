@@ -16,7 +16,7 @@ public class waterBoy_trigger : Interactable
     {
         dialogueBox.SetActive(false);
         speech.SetActive(true);
-        textComponent.text = string.Empty;
+        GameManager.Instance.textComponent.text = string.Empty;
     }
 
     public override void Dialogue()

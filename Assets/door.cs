@@ -36,13 +36,13 @@ public class door : Interactable
         {
             Debug.Log(player.gun_pickup);
             // Turn on warning UI
-            warning_text.text = ("Find the Gun!");
+            GameManager.Instance.warning_text.text = ("Find the Gun!");
         }
 
         else
         {
             // Update the player which door the player is in front of
-            warning_text.text = ("Press E to Interact");
+            GameManager.Instance.warning_text.text = ("Press E to Interact");
             player.UpdateDoor(this);
         }
 

@@ -1041,8 +1041,8 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 1
   projectile: {fileID: 1242200545790954841, guid: 2d592276c6ee2734fab5107eb4322de1, type: 3}
-  sightRange: 30
-  attackRange: 8
+  sightRange: 50
+  attackRange: 40.74
   playerInSightRange: 0
   playerInAttackRange: 0
   golem_die: {fileID: 8300000, guid: 4eb8a20b2e019bc4995edcdd6eca646a, type: 3}

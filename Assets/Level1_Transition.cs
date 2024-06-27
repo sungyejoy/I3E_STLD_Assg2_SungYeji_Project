@@ -1,66 +1,30 @@
+/*
+* Author: Sung Yeji
+* Date: 27/06/2024
+* Description: Script for Door 
+*/
+
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
-public class Level1_Transition : MonoBehaviour
+public class Level1_Transition : Interactable
 {
-    public Animator transition;
-
-    public float transitionTime = 1f;
-
-    [SerializeField] GameObject interact_text;
-    [SerializeField] GameObject level1_collider;
-
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void View()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            interact_text.SetActive(true);
-            LoadNextLevel();
-        }
+        base.View();
+        GameManager.Instance.warning_text.text = ("Press E to Interact");
+
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            interact_text.SetActive(false);
-        }
-    }
 
-    public void LoadNextLevel()
-    {
-        StartCoroutine(
-            LoadLevel(SceneManager.GetActiveScene().buildIndex + 1)
-            );
-    }
-
-    IEnumerator LoadLevel(int levelIndex)
-    {
-        // Play animation
-        transition.SetTrigger("Start");
-
-        /// <summary>
-        /// Pauses the transition for x seconds
-        /// </summary>
-        yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(levelIndex);
-        // Wait
-
-        // Load scene
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

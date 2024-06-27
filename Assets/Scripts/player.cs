@@ -18,6 +18,7 @@ public class player : MonoBehaviour
     /// Store the current door in front of the player
     /// </summary>
     door currentDoor;
+    Interactable collectible;
 
     start_gun currentGun;
     public bool gun_pickup = false;
@@ -28,10 +29,9 @@ public class player : MonoBehaviour
     [SerializeField] Transform main_camera;
     [SerializeField] float interactionDistance;
 
-    Interactable collectible;
+    int max_distance = 5;
 
-    [SerializeField] public GameObject warning_img;
-    public TextMeshProUGUI warning_text;
+    //public float threshold;
 
     // Start is called before the first frame update
     void Start()
@@ -46,17 +46,24 @@ public class player : MonoBehaviour
     void Update()
     {
         Debug.DrawLine(main_camera.position, main_camera.position + (main_camera.forward * interactionDistance), Color.red);
+        
+        //if (transform.position.y < threshold)
+        //{
+            //transform.position = new Vector3(-69.63f, 4.15f, -54.38f);
+        //}
 
         RaycastHit hit;
 
-        if (Physics.Raycast(main_camera.transform.position, main_camera.transform.forward, out hit))
+        if (Physics.Raycast(main_camera.transform.position, main_camera.transform.forward, out hit, max_distance))
         {
+            Debug.Log(hit.transform.name);
+
             if (hit.transform.TryGetComponent<Interactable>(out collectible))
             {
                 if (hit.transform.tag == "Collectible")
                 {
-                    warning_img.SetActive(true);
-                    warning_text.text = collectible.text.ToString();
+                    GameManager.Instance.warning_img.SetActive(true);
+                    GameManager.Instance.warning_text.text = collectible.text.ToString();
                 }
 
                 else if(hit.transform.tag == "Door")
@@ -68,8 +75,8 @@ public class player : MonoBehaviour
 
             else
             {
-                warning_img.SetActive(false);
-                warning_text.text = null;
+                GameManager.Instance.warning_img.SetActive(false);
+                GameManager.Instance.warning_text.text = null;
             }
 
         }
@@ -123,6 +130,11 @@ public class player : MonoBehaviour
             {
                 Debug.Log("door");
                 collectible.ChangeScene();
+            }
+
+            else if (collectible.tag == "NPC")
+            {
+                collectible.Dialogue();
             }
 
         }
