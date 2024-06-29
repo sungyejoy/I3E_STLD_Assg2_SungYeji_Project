@@ -13,12 +13,13 @@ public class JumpIncrease : Interactable
     {
 
     }
-    //public override void Collected(player player)
-    //{
-        //base.collected(player);
-        //player.GetComponent<FirstPersonController>().JumpHeight += increaseJumpHeight;
 
-    //}
+    public override void Collectible(player player)
+    {
+        player.GetComponent<FirstPersonController>().JumpHeight += increaseJumpHeight;
+        base.Collectible(player);
+
+    }
 
     // Update is called once per frame
     void Update()

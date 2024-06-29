@@ -13,6 +13,7 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class golem_Ball : PlayerHealth
 {
+    public GameObject projectile;
 
     private void Start()
     {
@@ -23,14 +24,14 @@ public class golem_Ball : PlayerHealth
     {
         if(collision.gameObject.tag == "Player")
         {
-            TakeDamage(10);
-            Debug.Log(currentHealth);
-            Destroy(gameObject);
+            TakeDamage(3);
+            Debug.Log(GameManager.Instance.currentHealth);
+            Destroy(projectile);
         }
 
         else
         {
-            Destroy(gameObject, 5f);
+            Destroy(projectile, 2f);
         }
     }
 

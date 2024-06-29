@@ -45,6 +45,8 @@ public class fireGolem_AI : MonoBehaviour
     [SerializeField] private AudioClip golem_die;
     [SerializeField] private AudioClip golem_groan;
 
+    public player Player;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerCapsule").transform;
@@ -96,7 +98,7 @@ public class fireGolem_AI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        AudioSource.PlayClipAtPoint(golem_groan, transform.position, 1f);
+        //AudioSource.PlayClipAtPoint(golem_groan, transform.position, 1f);
 
         firegolem.SetDestination(transform.position);
 
@@ -144,6 +146,10 @@ public class fireGolem_AI : MonoBehaviour
         /// </summary>
         //GetComponent<player>().addEnemy(enemy);
 
+        Player.addEnemy(1);
+
+
         Destroy(gameObject);
+
     }
 }

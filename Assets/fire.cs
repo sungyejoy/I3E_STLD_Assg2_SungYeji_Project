@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class fire : PlayerHealth
 {
+    float timeOverDamage = 0;
+    float nextDamageTime = 0.75f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,25 @@ public class fire : PlayerHealth
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("fire");
-            TakeDamage(10);
-            //GameManager.Instance.hurt_audio.Play();
-            Debug.Log(currentHealth);
+            TakeDamage(5);
+            GameManager.Instance.hurt_audio.Play();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            FireDamageOverTime();
+        }
+    }
+    
+    private void FireDamageOverTime()
+    {
+        if(Time.time >= timeOverDamage && GameManager.Instance.currentHealth > 0)
+        {
+            timeOverDamage = Time.time + 1/nextDamageTime;
+            TakeDamage(5);
         }
     }
 

@@ -21,7 +21,7 @@ public class Level1_Transition : Interactable
 
     public override void View()
     {
-        base.View();
+        //base.View();
         GameManager.Instance.warning_text.text = ("Press E to Interact");
 
     }

@@ -27,7 +27,7 @@ public class FilllStatusBar : MonoBehaviour
             fillImage.enabled = true;
         }
 
-        float fillValue = playerHealth.currentHealth / playerHealth.maxHealth;
+        float fillValue = GameManager.Instance.currentHealth / GameManager.Instance.maxHealth;
 
         if (fillValue <= slider.maxValue / 3)
         {

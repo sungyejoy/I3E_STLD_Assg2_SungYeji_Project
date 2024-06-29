@@ -15,7 +15,11 @@ public class KillFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("killfloor");
-        player.transform.position = respawn_point.transform.position;
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("killfloor");
+            player.transform.position = respawn_point.transform.position;
+            Physics.SyncTransforms();
+        }
     }
 }

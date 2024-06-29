@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        GameManager.Instance.currentHealth = GameManager.Instance.maxHealth;
     }
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
+        GameManager.Instance.currentHealth -= amount;
 
-        if(currentHealth <= 0)
+        if(GameManager.Instance.currentHealth <= 0)
         {
             // Die
             Debug.Log("Player Dead");
         }
     }
+
 }

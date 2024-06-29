@@ -22,11 +22,10 @@ public class start_gun : Interactable
 
     public door linkedDoor;
 
-    bool gun_pickup = false;
+    public bool gun_pickup = false;
 
     [SerializeField] private AudioClip bonus_sound;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,7 @@ public class start_gun : Interactable
         
     }
 
-    public override void Collectible()
+    public override void Collectible(player player)
     {
         // Update the player on the current collectible
         player.gameObject.GetComponent<player>().UpdateCollectible(this);
@@ -48,12 +47,12 @@ public class start_gun : Interactable
         linkedDoor.SetLock(false);
 
         // Change boolean to true when key is picked up
-        gun_pickup = true;
-        player.gameObject.GetComponent<player>().gunBoolean(gun_pickup);
+        GameManager.Instance.gun_pickup = true;
+        player.gameObject.GetComponent<player>().gunBoolean(GameManager.Instance.gun_pickup);
 
         gun_camera.SetActive(true);
 
-        base.Collectible();
+        base.Collectible(player);
     }
 
 

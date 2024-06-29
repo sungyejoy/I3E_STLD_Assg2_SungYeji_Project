@@ -21,7 +21,7 @@ public class doorTransition : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<player>().gun_pickup == true)
+        if (GameManager.Instance.gun_pickup == true)
         {
             approval_img.SetActive(true);
             notificationText.text = "Loading Level 1...";

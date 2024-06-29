@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI warning_text;
 
     public GameObject dialogueBox;
-
     public TextMeshProUGUI textComponent;
 
     public Animator transition;
@@ -20,6 +19,15 @@ public class GameManager : MonoBehaviour
     public GameObject hurt;
 
     public AudioSource hurt_audio;
+
+    public float maxHealth = 100;
+    public float currentHealth;
+
+    public int currentEnemy = 0;
+
+    public TextMeshProUGUI currentEnemyText;
+
+    public bool gun_pickup;
 
     // Start is called before the first frame update
     void Start()

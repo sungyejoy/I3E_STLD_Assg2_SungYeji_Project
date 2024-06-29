@@ -18,15 +18,9 @@ public class Interactable : MonoBehaviour
 
     public float transitionTime = 1f;
 
-    [SerializeField] GameObject speech;
+    //[SerializeField] public GameObject speech;
 
-    public string[] lines;
-    public float textSpeed;
-
-    private int index;
-    private int max_index;
-
-    public virtual void Collectible()
+    public virtual void Collectible(player player)
     {
         Destroy(gameObject);
     }
@@ -36,82 +30,6 @@ public class Interactable : MonoBehaviour
         // Turn on warningUI when the player enters trigger
         GameManager.Instance.warning_img.SetActive(true);
 
-    }
-
-    public virtual void Dialogue()
-    {
-        speech.SetActive(false);
-        GameManager.Instance.dialogueBox.SetActive(true);
-        GameManager.Instance.textComponent.text = string.Empty;
-        StartDialogue();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (GameManager.Instance.textComponent.text == lines[index])
-            {
-                NextLine();
-            }
-
-            else
-            {
-                StopAllCoroutines();
-                GameManager.Instance.textComponent.text = lines[index];
-            }
-        }
-    }
-
-    public void StartDialogue()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            index = 0;
-            max_index = 3;
-        }
-        
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            index = 4;
-            max_index = 6;
-        }
-        StartCoroutine(TypeLine());
-
-    }
-
-    IEnumerator TypeLine()
-    {
-        if (index <= max_index)
-        {
-            foreach (char c in lines[index].ToCharArray())
-            {
-                GameManager.Instance.textComponent.text += c;
-                yield return new WaitForSeconds(textSpeed);
-            }
-        }
-
-    }
-
-    void NextLine()
-    {
-        if (index < lines.Length - 1)
-        {
-            index++;
-            GameManager.Instance.textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-            Debug.Log(lines.Length);
-            Debug.Log(index);
-        }
-
-        else
-        {
-            Debug.Log("hi");
-            GameManager.Instance.dialogueBox.SetActive(false);
-            GameManager.Instance.textComponent.text = null;
-            gameObject.SetActive(false);
-        }
     }
 
 
@@ -150,7 +68,7 @@ public class Interactable : MonoBehaviour
         GameManager.Instance.warning_text.text = null;
 
         GameManager.Instance.dialogueBox.SetActive(false);
-        speech.SetActive(true);
+        //speech.SetActive(true);
         GameManager.Instance.textComponent.text = string.Empty;
     }
 

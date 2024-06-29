@@ -21,15 +21,16 @@ public class player : MonoBehaviour
     Interactable collectible;
 
     start_gun currentGun;
-    public bool gun_pickup = false;
-
-    public TextMeshProUGUI currentEnemyText;
-    public int currentEnemy = 0;
+    //public bool gun_pickup = false;
 
     [SerializeField] Transform main_camera;
     [SerializeField] float interactionDistance;
+    [SerializeField] GameObject level1_teleporter;
 
     int max_distance = 5;
+
+    bool gun_shoot = false;
+    public Gun gun;
 
     //public float threshold;
 
@@ -39,7 +40,7 @@ public class player : MonoBehaviour
         /// <summary>
         /// Turn on UI
         /// </summary>
-        currentEnemyText.text = "Enemies: " + currentEnemy + "/20";
+        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/20";
     }
 
     // Update is called once per frame
@@ -56,7 +57,7 @@ public class player : MonoBehaviour
 
         if (Physics.Raycast(main_camera.transform.position, main_camera.transform.forward, out hit, max_distance))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             if (hit.transform.TryGetComponent<Interactable>(out collectible))
             {
@@ -80,17 +81,27 @@ public class player : MonoBehaviour
             }
 
         }
+
+        if (gun_shoot)
+        {
+            gun.Shoot();
+        }
     }
 
     public void addEnemy(int enemy)
     {
-        currentEnemy += enemy;
-        currentEnemyText.text = "Enemies: " + currentEnemy + "/20";
+        GameManager.Instance.currentEnemy += enemy;
+        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/20";
+
+        if (GameManager.Instance.currentEnemy == 6)
+        {
+            level1_teleporter.SetActive(true);
+        }
 
         // Once all friend bees are found, font color changes
-        if (currentEnemy == 3)
+        if (GameManager.Instance.currentEnemy == 20)
         {
-            currentEnemyText.color = Color.yellow;
+            GameManager.Instance.currentEnemyText.color = Color.yellow;
         }
     }
 
@@ -103,7 +114,7 @@ public class player : MonoBehaviour
     // Reference to see if the honeypot key was picked up or not
     public void gunBoolean(bool reference)
     {
-        gun_pickup = reference;
+        GameManager.Instance.gun_pickup = reference;
     }
 
     // When an interaction happens
@@ -123,7 +134,7 @@ public class player : MonoBehaviour
             if (collectible.tag == "Collectible")
             {
                 Debug.Log("collectible");
-                collectible.Collectible();
+                collectible.Collectible(this);
             }
 
             else if (collectible.tag == "Door")
@@ -132,13 +143,13 @@ public class player : MonoBehaviour
                 collectible.ChangeScene();
             }
 
-            else if (collectible.tag == "NPC")
-            {
-                collectible.Dialogue();
-            }
-
         }
         
+    }
+
+    void OnShoot()
+    {
+        gun.Shoot();
     }
 
         public void UpdateDoor(door newDoor)

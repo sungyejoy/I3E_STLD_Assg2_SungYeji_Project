@@ -1,27 +1,93 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class waterBoy_trigger : Interactable
+public class waterBoy_trigger : MonoBehaviour
 {
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject speech;
+    public TextMeshProUGUI textComponent;
+    [SerializeField] private AudioClip talking;
+
+    public string[] lines;
+    public float textSpeed;
 
     private int index;
 
-    // Start is called before the first frame update
     void Start()
     {
-        dialogueBox.SetActive(false);
         speech.SetActive(true);
-        GameManager.Instance.textComponent.text = string.Empty;
+        textComponent.text = string.Empty;
     }
 
-    public override void Dialogue()
+
+    private void OnTriggerEnter(Collider other)
     {
-        base.Dialogue();
+
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("enter");
+            speech.SetActive(false);
+            dialogueBox.SetActive(true);
+            //textComponent.text = string.Empty;
+            StartDialogue();
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (textComponent.text == lines[index])
+            {
+                NextLine();
+            }
+
+            else
+            {
+                StopAllCoroutines();
+                textComponent.text = lines[index];
+            }
+        }
+    }
+
+    public void StartDialogue()
+    {
+        index = 0;
+        StartCoroutine(TypeLine());
+        //AudioSource.PlayClipAtPoint(talking, transform.position, 1f);
+    }
+
+    IEnumerator TypeLine()
+    {
+        foreach (char c in lines[index].ToCharArray())
+        {
+            textComponent.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void NextLine()
+    {
+        if (index < lines.Length - 1)
+        {
+            index++;
+            textComponent.text = string.Empty;
+            StartCoroutine(TypeLine());
+        }
+
+        else
+        {
+            dialogueBox.SetActive(false);
+            textComponent.text = null;
+            //AudioSource.Destroy(talking);
+            gameObject.SetActive(false);
+        }
     }
 
 }

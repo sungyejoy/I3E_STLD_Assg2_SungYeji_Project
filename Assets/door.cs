@@ -32,9 +32,9 @@ public class door : Interactable
 
         // If the object entering the trigger has "Player"
         // and has no gun collected
-        if (player.gun_pickup == false)
+        if (GameManager.Instance.gun_pickup == false)
         {
-            Debug.Log(player.gun_pickup);
+            Debug.Log(GameManager.Instance.gun_pickup);
             // Turn on warning UI
             GameManager.Instance.warning_text.text = ("Find the Gun!");
         }
@@ -50,7 +50,7 @@ public class door : Interactable
 
     public override void ChangeScene()
     {
-        if (player.gun_pickup)
+        if (GameManager.Instance.gun_pickup)
         {
             base.ChangeScene();
         }

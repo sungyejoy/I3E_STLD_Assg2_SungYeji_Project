@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class DialogueBox : MonoBehaviour
 {
+    [SerializeField] GameObject dialogueBox;
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
@@ -16,15 +17,19 @@ public class DialogueBox : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
+        dialogueBox.SetActive(true);
         StartDialogue();
     }
 
-    // Update is called once per frame
+
+
+
+
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if(textComponent.text == lines[index])
+            if (textComponent.text == lines[index])
             {
                 NextLine();
             }
@@ -54,7 +59,7 @@ public class DialogueBox : MonoBehaviour
 
     void NextLine()
     {
-        if (index<lines.Length - 1)
+        if (index < lines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -63,6 +68,8 @@ public class DialogueBox : MonoBehaviour
 
         else
         {
+            dialogueBox.SetActive(false);
+            textComponent.text = null;
             gameObject.SetActive(false);
         }
     }
