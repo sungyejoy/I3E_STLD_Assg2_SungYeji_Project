@@ -12740,6 +12740,8 @@ MonoBehaviour:
   playerCapsule: {fileID: 0}
   gun_cam: {fileID: 0}
   crystal_cam: {fileID: 0}
+  deathUI: {fileID: 0}
+  pauseUI: {fileID: 0}
   min: 
   sec: 
 --- !u!4 &879865906
@@ -15547,6 +15549,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 816652420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1981301765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3189517
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3189517
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3189517
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 82.67
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7795804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.15210375
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5878107
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.15361431
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -3.242
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 74.745
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -24.771
+      objectReference: {fileID: 0}
+    - target: {fileID: -6295004950106960566, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4b1d6d7f56d90f46ac9151c1dceac28, type: 2}
+    - target: {fileID: 60828063546442964, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4b1d6d7f56d90f46ac9151c1dceac28, type: 2}
+    - target: {fileID: 919132149155446097, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_Name
+      value: medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017609132957643522, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4b1d6d7f56d90f46ac9151c1dceac28, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1981301768}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1981301767}
+  m_SourcePrefab: {fileID: 100100000, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+--- !u!1 &1981301766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c50e4c1a26736ef4a81d2581624be5aa, type: 3}
+  m_PrefabInstance: {fileID: 1981301765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1981301767
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981301766}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.23
+  m_Height: 4.18
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1981301768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981301766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec88e70bb66b261469e7ac79f61b347f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Press E to Interact
+  transitionTime: 1
+  medicine_pill: {fileID: 1981301766}
+  player: {fileID: 0}
+  bonus_sound: {fileID: 8300000, guid: e964b434691fe264a95a56f0339661eb, type: 3}
 --- !u!1001 &1988390080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20766,3 +20904,4 @@ SceneRoots:
   - {fileID: 1501105351}
   - {fileID: 879865906}
   - {fileID: 128272262}
+  - {fileID: 1981301765}

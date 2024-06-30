@@ -1214,11 +1214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274082760209935183, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7274082760209935183, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7361780128243468865, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
       propertyPath: m_Layer
@@ -8564,7 +8564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1329788870
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8693,6 +8693,8 @@ MonoBehaviour:
   playerCapsule: {fileID: 1214016634}
   gun_cam: {fileID: 1892778322}
   crystal_cam: {fileID: 2001637227}
+  deathUI: {fileID: 0}
+  pauseUI: {fileID: 0}
   min: 
   sec: 
 --- !u!4 &1329788872
