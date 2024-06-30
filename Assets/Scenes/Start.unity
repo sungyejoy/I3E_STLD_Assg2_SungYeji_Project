@@ -13571,6 +13571,13 @@ MonoBehaviour:
   currentEnemy: 0
   currentEnemyText: {fileID: 1375539992}
   gun_pickup: 0
+  crystal_pickup: 0
+  stopwatch: 0
+  currentTime: 0
+  stopwatchText: {fileID: 1970942267}
+  stopwatchImg: {fileID: 1791688137}
+  min: 
+  sec: 
 --- !u!4 &702827243
 Transform:
   m_ObjectHideFlags: 0
@@ -15065,7 +15072,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263769920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a68afc794716cc0449f5b64d3ced1780, type: 3}
   m_Name: 
@@ -15705,6 +15712,13 @@ MonoBehaviour:
   currentEnemy: 0
   currentEnemyText: {fileID: 0}
   gun_pickup: 1
+  crystal_pickup: 0
+  stopwatch: 0
+  currentTime: 0
+  stopwatchText: {fileID: 0}
+  stopwatchImg: {fileID: 0}
+  min: 
+  sec: 
 --- !u!4 &1482548398
 Transform:
   m_ObjectHideFlags: 0
@@ -16062,6 +16076,72 @@ MonoBehaviour:
   muzzleFlash: {fileID: 130281365}
   gunAudio: {fileID: 8300000, guid: 73f86ff4e79c43440ad4d1a3923da7f3, type: 3}
   startGun: {fileID: 440653087}
+--- !u!1 &1568333384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568333386}
+  - component: {fileID: 1568333385}
+  - component: {fileID: 1568333387}
+  m_Layer: 0
+  m_Name: stopwatchTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1568333385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568333384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.15, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1568333386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568333384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.127483, y: 5.37, z: 17.366453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568333387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568333384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d340d9dd0be84964b9cf584e3f265e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1580038649 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5126527961139664767, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
@@ -18380,3 +18460,4 @@ SceneRoots:
   - {fileID: 1043410709}
   - {fileID: 637021647}
   - {fileID: 702827243}
+  - {fileID: 1568333386}

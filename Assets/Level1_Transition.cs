@@ -1,7 +1,7 @@
 /*
 * Author: Sung Yeji
 * Date: 27/06/2024
-* Description: Script for Door 
+* Description: Script for Transition of Scene 
 */
 
 using System.Collections;
@@ -13,15 +13,12 @@ using UnityEngine.SceneManagement;
 
 public class Level1_Transition : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    /// <summary>
+    /// An override code of the View function
+    /// </summary>
     public override void View()
     {
-        //base.View();
+        base.View();
         GameManager.Instance.warning_text.text = ("Press E to Interact");
 
     }

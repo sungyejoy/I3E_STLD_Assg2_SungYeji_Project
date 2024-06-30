@@ -21,6 +21,9 @@ public class player : MonoBehaviour
     Interactable collectible;
 
     start_gun currentGun;
+
+    crystal crystal;
+
     //public bool gun_pickup = false;
 
     [SerializeField] Transform main_camera;
@@ -115,6 +118,15 @@ public class player : MonoBehaviour
     public void gunBoolean(bool reference)
     {
         GameManager.Instance.gun_pickup = reference;
+    }
+
+    public void UpdateCrystal(crystal newCrystal)
+    {
+        crystal = newCrystal;
+    }
+    public void crystalBoolean(bool reference)
+    {
+        GameManager.Instance.crystal_pickup = reference;
     }
 
     // When an interaction happens
