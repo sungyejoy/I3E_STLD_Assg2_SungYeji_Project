@@ -11,11 +11,13 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.ProBuilder.Shapes;
 
+/// <summary>
+/// Controls the player's interactions and behaviors.
+/// </summary>
 public class player : MonoBehaviour
 {
-
     /// <summary>
-    /// Store the current door in front of the player
+    /// Stores the current door in front of the player.
     /// </summary>
     door currentDoor;
     Interactable collectible;
@@ -24,44 +26,60 @@ public class player : MonoBehaviour
 
     crystal crystal;
 
-    //public bool gun_pickup = false;
-
+    /// <summary>
+    /// The main camera of the player.
+    /// </summary>
     [SerializeField] Transform main_camera;
+
+    /// <summary>
+    /// The maximum distance the player can interact with objects.
+    /// </summary>
     [SerializeField] float interactionDistance;
+
+    /// <summary>
+    /// The level 1 teleporter GameObject.
+    /// </summary>
     [SerializeField] GameObject level1_teleporter;
 
+    /// <summary>
+    /// The maximum interaction distance.
+    /// </summary>
     int max_distance = 5;
 
+    /// <summary>
+    /// Determines if the player is shooting.
+    /// </summary>
     bool gun_shoot = false;
+
+    /// <summary>
+    /// The player's gun.
+    /// </summary>
     public Gun gun;
 
-    //public float threshold;
+    /// <summary>
+    /// The player's crystal in the final_waterboy script
+    /// </summary>
+    public final_waterboy final_waterboy;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Initializes the player's UI elements.
+    /// </summary>
     void Start()
     {
-        /// <summary>
-        /// Turn on UI
-        /// </summary>
         GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/20";
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates the player's state each frame.
+    /// </summary>
     void Update()
     {
         Debug.DrawLine(main_camera.position, main_camera.position + (main_camera.forward * interactionDistance), Color.red);
-        
-        //if (transform.position.y < threshold)
-        //{
-            //transform.position = new Vector3(-69.63f, 4.15f, -54.38f);
-        //}
 
         RaycastHit hit;
 
         if (Physics.Raycast(main_camera.transform.position, main_camera.transform.forward, out hit, max_distance))
         {
-            //Debug.Log(hit.transform.name);
-
             if (hit.transform.TryGetComponent<Interactable>(out collectible))
             {
                 if (hit.transform.tag == "Collectible")
@@ -69,20 +87,16 @@ public class player : MonoBehaviour
                     GameManager.Instance.warning_img.SetActive(true);
                     GameManager.Instance.warning_text.text = collectible.text.ToString();
                 }
-
-                else if(hit.transform.tag == "Door")
+                else if (hit.transform.tag == "Door")
                 {
                     collectible.View();
-                    
                 }
             }
-
             else
             {
                 GameManager.Instance.warning_img.SetActive(false);
                 GameManager.Instance.warning_text.text = null;
             }
-
         }
 
         if (gun_shoot)
@@ -91,80 +105,106 @@ public class player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds to the current enemy count and updates the UI.
+    /// </summary>
     public void addEnemy(int enemy)
     {
         GameManager.Instance.currentEnemy += enemy;
-        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/20";
+        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/10";
 
         if (GameManager.Instance.currentEnemy == 6)
         {
             level1_teleporter.SetActive(true);
         }
 
-        // Once all friend bees are found, font color changes
-        if (GameManager.Instance.currentEnemy == 20)
+        if (GameManager.Instance.currentEnemy == 10)
         {
             GameManager.Instance.currentEnemyText.color = Color.yellow;
         }
     }
 
-    // Connects object that has HoneypotKey script
+    /// <summary>
+    /// Updates the current collectible with the given gun.
+    /// </summary>
     public void UpdateCollectible(start_gun newCollectible)
     {
         currentGun = newCollectible;
     }
 
-    // Reference to see if the honeypot key was picked up or not
+    /// <summary>
+    /// Updates the gun pickup status.
+    /// </summary>
     public void gunBoolean(bool reference)
     {
         GameManager.Instance.gun_pickup = reference;
     }
 
+    /// <summary>
+    /// Updates the current crystal with the given crystal.
+    /// </summary>
     public void UpdateCrystal(crystal newCrystal)
     {
         crystal = newCrystal;
     }
+
+    /// <summary>
+    /// Updates the crystal pickup status.
+    /// </summary>
     public void crystalBoolean(bool reference)
     {
         GameManager.Instance.crystal_pickup = reference;
     }
 
-    // When an interaction happens
+    /// <summary>
+    /// Handles player interactions.
+    /// </summary>
     void OnInteract()
     {
-        // This is a "null check" for the door
         if (currentDoor != null)
         {
-            Debug.Log("currentdoor null");
             currentDoor.OpenDoor();
             currentDoor = null;
         }
 
-
-        if(collectible != null)
+        if (collectible != null)
         {
             if (collectible.tag == "Collectible")
             {
-                Debug.Log("collectible");
                 collectible.Collectible(this);
             }
-
             else if (collectible.tag == "Door")
             {
-                Debug.Log("door");
                 collectible.ChangeScene();
             }
-
         }
-        
     }
 
+    /// <summary>
+    /// Handles shooting the gun.
+    /// </summary>
     void OnShoot()
     {
         gun.Shoot();
     }
 
-        public void UpdateDoor(door newDoor)
+    /// <summary>
+    /// Handles dropping of crystal
+    /// </summary>
+    void OnDrop()
+    {
+        Debug.Log("g");
+
+        if (final_waterboy != null)
+        {
+            final_waterboy.crystal_drop = true;
+        }
+    }
+
+    /// <summary>
+    /// Updates the current door with the given door.
+    /// </summary>
+    public void UpdateDoor(door newDoor)
     {
         currentDoor = newDoor;
     }

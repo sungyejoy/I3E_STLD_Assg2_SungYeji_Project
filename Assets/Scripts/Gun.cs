@@ -1,52 +1,49 @@
 /*
- * Author:  Sung Yeji
- * Date: 15/06/2024
- * Description: This script is for the Gun on the first person 
- */
+* Author:  Sung Yeji
+* Date: 15/06/2024
+* Description: This script is for the gun in the firstpersonaio camera
+*/
 
 using UnityEngine;
 
+/// <summary>
+/// Represents a gun that can shoot projectiles.
+/// </summary>
 public class Gun : MonoBehaviour
 {
     /// <summary>
-    /// The amount of damage the gun does per shoot is 10
+    /// The amount of damage the gun does per shot.
     /// </summary>
     public float damage = 10;
 
     /// <summary>
-    /// A distance range that the gun can aim accurately is 100
+    /// The maximum distance range the gun can accurately aim.
     /// </summary>
     public float range = 100f;
 
-    //public float fireRate = 15f;
-
     /// <summary>
-    /// The impact of the gun's bullet does 50
+    /// The force applied to objects hit by the gun's projectile.
     /// </summary>
     public float impactForce = 50f;
 
     /// <summary>
-    /// To connect the main camera into the first person
+    /// The main camera associated with the first-person perspective.
     /// </summary>
     public Camera fpsCam;
 
     /// <summary>
-    /// To connect 
+    /// The particle system used for muzzle flash when shooting.
     /// </summary>
     public ParticleSystem muzzleFlash;
-    // public GameObject impactEffect;
 
-    //private float nextTimeToFire = 0f;
-
+    /// <summary>
+    /// The audio clip played when the gun fires.
+    /// </summary>
     [SerializeField] private AudioClip gunAudio;
 
     /// <summary>
-    /// AudioSource for the sound of fire golem dying
+    /// Performs a shooting action if the player has picked up the gun.
     /// </summary>
-    //public AudioSource golem_hit;
-
-    public start_gun startGun;
-
     public void Shoot()
     {
         if (GameManager.Instance.gun_pickup == true)
@@ -61,8 +58,6 @@ public class Gun : MonoBehaviour
 
                 fireGolem_AI FireGolem_AI = hit.transform.GetComponent<fireGolem_AI>();
 
-                //golem_hit.enabled = true;
-
                 if (FireGolem_AI != null)
                 {
                     FireGolem_AI.TakeDamage(damage);
@@ -72,12 +67,7 @@ public class Gun : MonoBehaviour
                 {
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
-
-                //Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-
             }
         }
-        
     }
-
 }

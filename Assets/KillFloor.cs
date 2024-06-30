@@ -32,7 +32,7 @@ public class KillFloor : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("killfloor");
-            player.transform.position = respawn_point.transform.position;
+            GameManager.Instance.playerCapsule.transform.position = respawn_point.transform.position;
             Physics.SyncTransforms();
         }
     }

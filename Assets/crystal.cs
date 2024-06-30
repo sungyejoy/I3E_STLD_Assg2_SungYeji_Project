@@ -1,7 +1,7 @@
 /*
 * Author:  Sung Yeji
 * Date: 29/06/2024
-* Description: This script is for the Crystal (Special) Collectible that can be carried across scenes, and placed down
+* Description: This script is for the Crystal (Special) Collectible that can be carried across scenes, and placed down (Child script) 
 */
 
 using System.Collections;
@@ -20,16 +20,6 @@ public class crystal : Interactable
     [SerializeField] private AudioClip bonus_sound;
 
     /// <summary>
-    /// Gun connected to the first person camera.
-    /// </summary>
-    [SerializeField] GameObject gun;
-
-    /// <summary>
-    /// Crystal connected to the first person camera.
-    /// </summary>
-    [SerializeField] GameObject crystal_obj;
-
-    /// <summary>
     /// Teleportation Object to pop up when the crystal is collected.
     /// </summary>
     [SerializeField] GameObject teleport;
@@ -39,7 +29,7 @@ public class crystal : Interactable
     /// </summary>
     void Start()
     {
-        crystal_obj.SetActive(false);
+        //GameManager.Instance.crystal_cam.SetActive(false);
         teleport.SetActive(false);
     }
 
@@ -49,10 +39,10 @@ public class crystal : Interactable
     public override void Collectible(player player)
     {
         // Set the crystal on first person camera to be active when player interacts with the crystal object
-        crystal_obj.SetActive(true);
+        GameManager.Instance.crystal_cam.SetActive(true);
 
         // Set the gun on the first person camera to be inactive when the crystal object is interacted with
-        gun.SetActive(false);
+        GameManager.Instance.gun_cam.SetActive(false);
 
         // Update the player on the current collectible
         player.gameObject.GetComponent<player>().UpdateCrystal(this);

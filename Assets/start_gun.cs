@@ -1,7 +1,7 @@
 /*
 * Author: Sung Yeji
 * Date: 22/06/2024
-* Description: Script for when picking up the gun
+* Description: Script for when picking up the gun (Child script) 
 */
 
 using System.Collections;
@@ -53,12 +53,5 @@ public class start_gun : Interactable
         gun_camera.SetActive(true);
 
         base.Collectible(player);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
