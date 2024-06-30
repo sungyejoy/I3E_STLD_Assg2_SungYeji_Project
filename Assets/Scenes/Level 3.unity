@@ -361,6 +361,8 @@ MonoBehaviour:
   playerCapsule: {fileID: 1524114312}
   gun_cam: {fileID: 689452232}
   crystal_cam: {fileID: 224862020}
+  deathUI: {fileID: 0}
+  pauseUI: {fileID: 0}
   min: 
   sec: 
 --- !u!4 &90455461
@@ -740,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3829291127470819075, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5492345574113395261, guid: 68329f280c8a0344c881e7602278c11d, type: 3}
       propertyPath: m_IsActive
@@ -2428,6 +2430,76 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2540817853737639666, guid: 3047d35874483f148b02d558a8b4288f, type: 3}
+--- !u!1 &1146668843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146668845}
+  - component: {fileID: 1146668844}
+  - component: {fileID: 1146668846}
+  m_Layer: 0
+  m_Name: Spaceship trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1146668844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146668843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.88, y: 8.43, z: 14.22}
+  m_Center: {x: -2, y: 0, z: 0}
+--- !u!4 &1146668845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146668843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 144.74455, y: 2.630032, z: -25.845875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146668846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146668843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a097b62b646e494b9c3afd82c61772e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warning_img: {fileID: 1970315586}
+  warning_text: {fileID: 636875098}
+  transitionTime: 1
+  final_waterboy: {fileID: 1822915968}
 --- !u!1 &1176637217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,7 +3408,7 @@ MonoBehaviour:
   interactionDistance: 1
   level1_teleporter: {fileID: 0}
   gun: {fileID: 689452237}
-  final_waterboy: {fileID: 0}
+  final_waterboy: {fileID: 1822915968}
 --- !u!114 &1524114317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4424,7 +4496,7 @@ GameObject:
   - component: {fileID: 1822915968}
   m_Layer: 0
   m_Name: waterboy_trigger
-  m_TagString: Collectible
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4459,7 +4531,7 @@ Transform:
   m_GameObject: {fileID: 1822915965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 148.54063, y: 1.3399975, z: -16.996872}
+  m_LocalPosition: {x: 143.76064, y: 1.3399975, z: -9.226869}
   m_LocalScale: {x: 1.5945408, y: 1.3536, z: 1.5552865}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4507,7 +4579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 148.48
+      value: 143.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4515,7 +4587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.800003
+      value: -9.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4563,7 +4635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b370bdae2728ba44db6c014e23c2b104, type: 3}
       propertyPath: m_TagString
-      value: NPC
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4777,6 +4849,7 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 990146585}
   - {fileID: 1560661473}
+  - {fileID: 1146668845}
   - {fileID: 1848742808}
   - {fileID: 1822915967}
   - {fileID: 293027193}

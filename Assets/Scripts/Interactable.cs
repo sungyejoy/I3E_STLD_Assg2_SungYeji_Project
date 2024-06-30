@@ -27,6 +27,17 @@ public class Interactable : MonoBehaviour
     public float transitionTime = 1f;
 
     /// <summary>
+    /// Start is called before the first frame update. Initializes game objects and UI elements.
+    /// </summary>
+    void Start()
+    {
+        GameManager.Instance.warning_text.text = null; // Clear warning text
+
+        GameManager.Instance.dialogueBox.SetActive(false); // Deactivate dialogue box
+        GameManager.Instance.textComponent.text = string.Empty; // Clear text component
+    }
+
+    /// <summary>
     /// Virtual method to handle collecting the object.
     /// </summary>
     public virtual void Collectible(player player)
@@ -72,16 +83,5 @@ public class Interactable : MonoBehaviour
 
         // Load the next scene
         SceneManager.LoadScene(levelIndex);
-    }
-
-    /// <summary>
-    /// Start is called before the first frame update. Initializes game objects and UI elements.
-    /// </summary>
-    void Start()
-    {
-        GameManager.Instance.warning_text.text = null; // Clear warning text
-
-        GameManager.Instance.dialogueBox.SetActive(false); // Deactivate dialogue box
-        GameManager.Instance.textComponent.text = string.Empty; // Clear text component
     }
 }

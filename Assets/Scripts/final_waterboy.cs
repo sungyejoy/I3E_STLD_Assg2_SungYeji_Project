@@ -22,12 +22,12 @@ public class final_waterboy : MonoBehaviour
     [SerializeField] private AudioClip talking;
 
     /// <summary>
-    /// AudioClip of WaterBoy talking.
+    /// Warning Img
     /// </summary>
     [SerializeField] GameObject warning_img;
 
     /// <summary>
-    /// AudioClip of WaterBoy talking.
+    /// Warning text
     /// </summary>
     public TextMeshProUGUI warning_text;
 
@@ -76,6 +76,7 @@ public class final_waterboy : MonoBehaviour
                 warning_text.text = "Press G to Drop Crystal";
             }
 
+            
             if(crystal_drop == true)
             {
                 warning_img.SetActive(false);

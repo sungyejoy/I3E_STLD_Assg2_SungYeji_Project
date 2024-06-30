@@ -30,8 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (GameManager.Instance.currentHealth <= 0)
         {
-            // Die
-            Debug.Log("Player Dead");
+            GameManager.Instance.deathUI.SetActive(true);
         }
     }
 }

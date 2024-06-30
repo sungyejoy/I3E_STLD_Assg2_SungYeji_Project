@@ -121,6 +121,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject crystal_cam;
 
     /// <summary>
+    /// Death UI
+    /// </summary>
+    [SerializeField] public GameObject deathUI;
+
+    /// <summary>
+    /// Pause UI
+    /// </summary>
+    [SerializeField] public GameObject pauseUI;
+
+    /// <summary>
     /// String to display minutes.
     /// </summary>
     public string min = "";
@@ -139,7 +149,6 @@ public class GameManager : MonoBehaviour
         currentTime = 0;
         stopwatchImg.SetActive(true);
         stopwatchText.text = "Time: 0:00";
-        //crystal_cam.SetActive(false);
     }
 
     /// <summary>

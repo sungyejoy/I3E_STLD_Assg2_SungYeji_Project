@@ -66,7 +66,9 @@ public class player : MonoBehaviour
     /// </summary>
     void Start()
     {
-        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/20";
+        GameManager.Instance.currentEnemyText.text = "Enemies: " + GameManager.Instance.currentEnemy + "/10";
+        GameManager.Instance.pauseUI.SetActive(false);
+        GameManager.Instance.deathUI.SetActive(false);
     }
 
     /// <summary>
@@ -102,6 +104,11 @@ public class player : MonoBehaviour
         if (gun_shoot)
         {
             gun.Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.pauseUI.SetActive(true);
         }
     }
 
@@ -191,7 +198,7 @@ public class player : MonoBehaviour
     /// <summary>
     /// Handles dropping of crystal
     /// </summary>
-    void OnDrop()
+    public void OnDrop()
     {
         Debug.Log("g");
 
